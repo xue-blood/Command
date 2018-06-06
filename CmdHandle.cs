@@ -9,6 +9,7 @@ namespace Command {
         static CmdHandle () {
             IParsers = new Dictionary<string, IParser> ();
             IParsers.Add ("Console", new Parser.ConsoleParser ());
+            IParsers.Add ("File", new Parser.FileParser ());
         }
 
         public static void loadMethods<T> ( Dictionary<string, MethodInfo> dic ) {

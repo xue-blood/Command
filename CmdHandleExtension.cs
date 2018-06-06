@@ -10,5 +10,12 @@ namespace Command {
             handle.Read (args);
             return handle.Run<T> (info);
         }
+
+        public static object Run<T> ( this MethodInfo info, string arg, string plugin = "Console", int startIndex = 0 ) {
+            CmdHandle handle = new CmdHandle ();
+            handle.Init (plugin);
+            handle.Read (arg, startIndex);
+            return handle.Run<T> (info);
+        }
     }
 }

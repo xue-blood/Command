@@ -14,8 +14,8 @@ namespace Command {
         CmdParam parseArgs ( string[] array );
 
         /// <summary>
-        /// 预处理参数参数
+        /// 解析参数
         /// </summary>
-        string[] preParseArgs ( string str, int startIndex = 0 );
+        CmdParam parseArgs ( string str, int startIndex = 0 );
     }
 }

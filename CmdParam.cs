@@ -70,7 +70,7 @@ namespace Command {
             foreach (var p in paramDic) {
                 r += string.Format ("[{0}:{1}] ", p.Key, getListString (p.Value));
             }
-            return r;
+            return r.valid () ? r : "{}";
         }
 
         public void Clear () { paramDic.Clear (); }

@@ -12,6 +12,7 @@ namespace Command {
 
         public enum Code {
             success,    // 成功
+            invalid,    // 无效
             paramMiss,  // 缺少参数
             outofRange, // 超出范围
         }

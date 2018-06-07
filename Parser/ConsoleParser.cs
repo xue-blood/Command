@@ -111,7 +111,7 @@ namespace Command.Parser {
             return param;
         }
 
-        public string[] preParseArgs ( string str, int startIndex = 0 ) {
+        public CmdParam parseArgs ( string str, int startIndex = 0 ) {
             List<StringBuilder> sbds = new List<StringBuilder> ();
             sbds.Add (new StringBuilder ());
             bool quata = false; // 是否处于引号中
@@ -136,7 +136,8 @@ namespace Command.Parser {
 
             string[] strs = new string[sbds.Count];
             for (int i = 0; i<strs.Length; i++) { strs[i] = sbds[i].ToString (); }
-            return strs;
+
+            return parseArgs (strs);
         }
     }
 }

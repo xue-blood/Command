@@ -53,8 +53,7 @@ namespace Command {
         }
 
         public void Read ( string arg, int startIndex = 0 ) {
-            var args = iparser.preParseArgs (arg, startIndex);
-            param = iparser.parseArgs (args);
+            param = iparser.parseArgs (arg, startIndex);
         }
 
         public void Read ( string[] args ) {
@@ -62,7 +61,7 @@ namespace Command {
         }
 
         public T Run<T> ( Dictionary<string, MethodInfo> dic ) {
-            if (!dic.ContainsKey (name)) { return default (T); }
+            if (!dic.ContainsKey (name)) { throw new CmdException (CmdException.Code.invalid, "无效命令"); }
             return Run<T> (dic[name]);
         }
 

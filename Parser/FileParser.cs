@@ -51,7 +51,9 @@ namespace Command.Parser {
             CmdParam param = new CmdParam ();
             if (array == null) { return param; }
             for (int i = 0; i<array.Length; i++) {
-                string[] one = array[i].Split ('=');
+                var raw = array[i].Trim ();
+                if (!raw.valid () || raw[0] =='#') { continue; }
+                string[] one = raw.Split ('=');
                 if (one.Length == 1) {
                     param[one[0]] = null;
                 }
@@ -62,9 +64,9 @@ namespace Command.Parser {
             return param;
         }
 
-        public string[] preParseArgs ( string str, int startIndex = 0 ) {
+        public CmdParam parseArgs ( string str, int startIndex = 0 ) {
             if (!File.Exists (str)) { return null; }
-            return File.ReadAllLines (str);
+            return parseArgs (File.ReadAllLines (str));
         }
     }
 }

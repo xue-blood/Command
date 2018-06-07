@@ -10,6 +10,7 @@ namespace Command {
             IParsers = new Dictionary<string, IParser> ();
             IParsers.Add ("Console", new Parser.ConsoleParser ());
             IParsers.Add ("File", new Parser.FileParser ());
+            IParsers.Add ("JsonRpc", new Parser.JsonRpcParser ());
         }
 
         public static void loadMethods<T> ( Dictionary<string, MethodInfo> dic ) {
@@ -38,26 +39,29 @@ namespace Command {
 
         IParser iparser;
 
-        /// <summary>
-        /// 命令
-        /// </summary>
-        public string name { get; set; }
+
         /// <summary>
         /// 参数
         /// </summary>
         CmdParam param = new CmdParam ();
 
-        public void Init ( string parser = "Console" ) {
+        public string name { get => param.name; set => param.name = value; }
+
+        public void Read ( string arg, int startIndex = 0, string parser = "Console" ) {
             iparser = IParsers[parser];
             param.Clear ();
-        }
-
-        public void Read ( string arg, int startIndex = 0 ) {
             param = iparser.parseArgs (arg, startIndex);
         }
 
-        public void Read ( string[] args ) {
+        public void Read ( string[] args, string parser = "Console" ) {
+            iparser = IParsers[parser];
+            param.Clear ();
             param = iparser.parseArgs (args);
+        }
+
+        public string Write ( string msg, int code = 0, string parser = "Console" ) {
+            iparser = IParsers[parser];
+            return iparser.unParser (msg, code, param.data);
         }
 
         public T Run<T> ( Dictionary<string, MethodInfo> dic ) {

@@ -139,5 +139,9 @@ namespace Command.Parser {
 
             return parseArgs (strs);
         }
+
+        public string unParser ( string str, int code = 0, object data = null ) {
+            throw new NotImplementedException ();
+        }
     }
 }

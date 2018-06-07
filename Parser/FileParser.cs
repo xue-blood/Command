@@ -68,5 +68,9 @@ namespace Command.Parser {
             if (!File.Exists (str)) { return null; }
             return parseArgs (File.ReadAllLines (str));
         }
+
+        public string unParser ( string str, int code = 0, object data = null ) {
+            throw new NotImplementedException ();
+        }
     }
 }

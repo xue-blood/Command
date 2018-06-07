@@ -3,7 +3,21 @@ using System.Collections.Generic;
 
 namespace Command {
     public class CmdParam {
+
+        /// <summary>
+        /// 命令
+        /// </summary>
+        public string name { get; set; }
+
+        /// <summary>
+        /// 参数
+        /// </summary>
         Dictionary<string, List<string>> paramDic = new Dictionary<string, List<string>> ();
+
+        /// <summary>
+        /// 自定义数据
+        /// </summary>
+        public object data;
 
         /// <summary>
         /// 获取参数

@@ -41,11 +41,16 @@ namespace Command {
 
 
         /// <summary>
+        /// 命令
+        /// </summary>
+        public string name { get; set; }
+
+        /// <summary>
         /// 参数
         /// </summary>
-        CmdParam param = new CmdParam ();
+        public CmdParam param = new CmdParam ();
 
-        public string name { get => param.name; set => param.name = value; }
+
 
         public void Read ( string arg, int startIndex = 0, string parser = "Console" ) {
             iparser = IParsers[parser];

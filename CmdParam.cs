@@ -5,11 +5,6 @@ namespace Command {
     public class CmdParam {
 
         /// <summary>
-        /// 命令
-        /// </summary>
-        public string name { get; set; }
-
-        /// <summary>
         /// 参数
         /// </summary>
         Dictionary<string, List<string>> paramDic = new Dictionary<string, List<string>> ();

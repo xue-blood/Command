@@ -63,11 +63,9 @@ namespace Command.Parser {
                 if (req == null) { return null; }
             }
             catch (Exception ex) {
-                new JsonRpcException (-32700, "Parse error", ex);
+                throw new JsonRpcException (-32700, "Parse error", ex);
             }
             CmdParam param = new CmdParam ();
-            param.name = req.Method;
-            param.data = req;
 
             if (req.Params is string)
                 param[0] = req.Params as string;

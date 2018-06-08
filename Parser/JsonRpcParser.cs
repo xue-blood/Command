@@ -66,7 +66,7 @@ namespace Command.Parser {
                 throw new JsonRpcException (-32700, "Parse error", ex);
             }
             CmdParam param = new CmdParam ();
-
+            param.data = req;
             if (req.Params is string)
                 param[0] = req.Params as string;
             else {
@@ -92,7 +92,10 @@ namespace Command.Parser {
             JsonRequest jsonRequest = data as JsonRequest;
             JsonResponse jsonResponse = new JsonResponse ();
 
-            jsonResponse.Id = jsonRequest.Id;
+            if (jsonRequest != null)
+                jsonResponse.Id = jsonRequest.Id;
+            else
+                jsonResponse.Id = 0;
 
             if (code != 0) {
                 jsonResponse.Error = new JsonRpcException (code, ret, null);

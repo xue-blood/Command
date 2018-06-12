@@ -69,21 +69,7 @@ namespace Command.Parser {
             param.data = req;
             if (req.Params is string)
                 param[0] = req.Params as string;
-            else {
-                JObject obj = req.Params as JObject;
-
-                int i = 0;
-                var en = obj.GetEnumerator ();
-                while (en.MoveNext ()) {
-                    if (en.Current.Value.Type == JTokenType.String)
-                        param[i] = en.Current.Value.ToString ();
-                    else
-                        foreach (var item in en.Current.Value) {
-                            param[i] = item.ToString ();
-                        }
-                }
-            }
-
+            
             return param;
         }
 

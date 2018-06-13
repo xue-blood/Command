@@ -65,7 +65,10 @@ namespace Command.Parser {
         }
 
         public CmdParam parseArgs ( string str, int startIndex = 0 ) {
-            if (!File.Exists (str)) { return null; }
+            if (!File.Exists (str)) {
+                Console.WriteLine ("File no found: "+str);
+                return new CmdParam ();
+            }
             return parseArgs (File.ReadAllLines (str));
         }
 

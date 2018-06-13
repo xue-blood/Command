@@ -69,7 +69,7 @@ namespace Command.Parser {
             param.data = req;
             if (req.Params is string)
                 param[0] = req.Params as string;
-            
+
             return param;
         }
 
@@ -95,7 +95,7 @@ namespace Command.Parser {
                 // result : This member is REQUIRED on success.
                 // This member MUST NOT exist if there was an error invoking the method.    
                 // Either the result member or error member MUST be included, but both members MUST NOT be included.
-                jsonResponse.Result = new Newtonsoft.Json.Linq.JValue ((Object)null);
+                jsonResponse.Result = new Newtonsoft.Json.Linq.JValue ("ok");
             }
 
             StringWriter sw = new StringWriter ();

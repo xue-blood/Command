@@ -16,6 +16,7 @@ namespace Command {
             paramMiss,  // 缺少参数
             outofRange, // 超出范围
             exception,  // 出現异常
+            unsupport,  // 暂不支持
             update_pull,// 拉取失败
             update_merge,// 合并失败
             update_push, // 推送失败

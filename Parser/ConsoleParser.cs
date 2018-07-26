@@ -52,9 +52,7 @@ namespace Command.Parser {
                     if (args[i] == null) {
                         if (mpa.require) { throw new ArgumentException ("Require parameter : {0}!".format (l)); }// 需要的参数
                         else if (mpa.defaultValue != null) { args[i] = mpa.defaultValue; }// 默认值
-                    }
-                    else {
-                        if (mpa.isswitch) { args[i] = "true"; } // 开关
+                        else if (mpa.isswitch) { args[i] = "true"; } // 开关
                     }
                 }
             }
